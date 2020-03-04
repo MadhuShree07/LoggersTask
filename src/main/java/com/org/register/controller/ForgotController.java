@@ -32,22 +32,25 @@ public class ForgotController {
 			boolean valid = this.service.validateForgotPassword(dto);
 			if (!valid) {
 				String entity = this.service.validateForgot(dto);
+				boolean valid = this.service.validateForgotPassword(dto);
+			if (!valid) {
+				String entity = this.service.validateForgot(dto);
 				if (Objects.nonNull(entity)) {
 
-					ModelMap email = map.addAttribute("InvalidEmail",
-							"Entered email is not valid and passwords donot match");
+					ModelMap email = map.addAttribute("Invalid mail",
+							"Email not valid and passwords not matched");
 
 				} else {
-					ModelMap pass = map.addAttribute("PassworddontMatch ", "Passwords donot match, enter again");
+					ModelMap pass = map.addAttribute("Password not Matched ", "enter again");
 				}
 
 			} else {
 
 				String entity1 = this.service.validateForgot(dto);
 				if (!Objects.nonNull(entity1)) {
-					ModelMap newPassword = map.addAttribute("SuccessMessage", "Password changed successfully");
+					ModelMap newPassword = map.addAttribute("Success", "Password changed successfully");
 				} else {
-					ModelMap mail = map.addAttribute("EnteredEmailIsNotValid", "Entered mail is not valid");
+					ModelMap mail = map.addAttribute("email is not valid", "mail is not valid");
 
 				}
 
