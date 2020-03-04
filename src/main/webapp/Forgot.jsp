@@ -53,10 +53,10 @@
 		</div>
 		<div class="text-center" align="center">
 
-			<span style="color: green; font-family: arial;">${InvalidEmail}</span>
-			<span style="color: red; font-family: arial;">${PassworddontMatch}</span>
-			<span style="color: red; font-family: arial;">${SuccessMessage}</span>
-			<span style="color: red; font-family: arial;">${EnteredEmailIsNotValid}</span>
+			<span style="color: green; font-family: arial;">Invalid mail}</span>
+			<span style="color: red; font-family: arial;">${Password not Matched}</span>
+			<span style="color: red; font-family: arial;">${Success}</span>
+			<span style="color: red; font-family: arial;">${register}</span>
 		</div>
 
 		<div class="container w-50%">
