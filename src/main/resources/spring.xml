@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan
+		base-package="com.org.register"></context:component-scan>
+
+
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		id="localSessionFactoryBean">
+	
+		<property name="dataSource" ref="driverManagerDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.org.register.entity.RegisterEntity</value>
+
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+
+	</bean>
+
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		id="propertyPlaceholderConfigurer">
+		<property name="locations"
+			value="classpath:reg.properties"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="driverManagerDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driver.class.name}" />
+		<property name="username"
+			value="${jdbc.user.name}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="url" value="${jdbc.url}" />
+	</bean>
+</beans>
